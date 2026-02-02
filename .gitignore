@@ -26,3 +26,5 @@ yarn.lock
 /nbproject
 /laravel-echo-server.lock
 .env
+.env.server
+.env.server-test
