@@ -1,0 +1,123 @@
+
+table.table_css
+{
+    border-collapse: collapse;
+    border: 1px solid #000;
+    letter-spacing: 1px;
+    font-family: sans-serif;
+    font-size: 13px;
+    line-height: 20px;
+    width: 100%;
+}
+
+.table_css td,
+.table_css th
+{
+    vertical-align: top !important;
+    border: 1px solid #000;
+    padding: 5px;
+    text-align: center !important;
+    font-weight: normal;
+}
+
+.d-flex
+{
+    display: flex;
+    gap: 1em;
+    width: 100%;
+}
+
+.d-none
+{
+    display: none;
+}
+
+.text-uppercase
+{
+    text-transform: uppercase;
+}
+
+.mt-20
+{
+    margin-top: 20px;
+}
+
+.text-center
+{
+    text-align: center;
+}
+
+/** Define the footer rules **/
+.footer
+{
+    position: fixed;
+    bottom: 0cm;
+    left: 1cm;
+    right: 1cm;
+    height: 1cm;
+}
+
+.pagenum:before
+{
+    content: counter(page);
+}
+
+#break
+{
+    display:inline;
+}
+
+#break:after
+{
+    content:"\a";
+    white-space: pre;
+}
+.fw-bold
+{
+    font-weight: bold;
+}
+.mr-16
+{
+    margin-right: 16px;
+}
+
+.mt-10
+{
+    margin-top: 10px;
+}
+
+.mt-16
+{
+    margin-top: 16px;
+}
+
+.mt-32
+{
+    margin-top: 32px;
+}
+
+.mt-100
+{
+    margin-top: 100px;
+}
+
+.mb-16
+{
+    margin-bottom: 16px;
+}
+
+.mb-32
+{
+    margin-bottom: 32px;
+}
+
+.mb-100
+{
+    margin-bottom: 100px;
+}
+
+
+.item-border 
+{
+    font-size: 15px;font-family: sans-serif;border: 1px solid black;padding: 5px; text-align: center;border-radius: 10px
+}

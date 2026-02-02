@@ -1,0 +1,64 @@
+stages:
+  - install
+  - test
+  - build
+  - deploy
+
+variables:
+  DOCKER_DRIVER: overlay2
+  DB_CONNECTION: pgsql
+  DB_HOST: postgres
+  DB_PORT: 5432
+  DB_DATABASE: guindy_manager
+  DB_USERNAME: postgres
+  DB_PASSWORD: root
+
+install:
+  stage: install
+  image: php:7.3
+  script:
+    - composer install --no-interaction --prefer-dist
+    - npm install
+
+test_rest:
+  stage: test
+  image: php:7.3
+  services:
+    - postgres:14
+  script:
+    - php artisan migrate --env=testing
+    - php artisan guindytester:run --only=rest || exit 1
+  only:
+    changes:
+      - app/Http/Controllers/**
+      - routes/web.php
+      - tests/Feature/RestTest.php
+
+test_graphql:
+  stage: test
+  image: php:7.3
+  services:
+    - postgres:14
+  script:
+    - php artisan migrate --env=testing
+    - php artisan guindytester:run --only=graphql || exit 1
+  only:
+    changes:
+      - app/GraphQL/**
+      - routes/graphql.php
+      - tests/Feature/GraphQLTest.php
+
+build:
+  stage: build
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    - docker build -t guindy_manager_app .
+
+deploy:
+  stage: deploy
+  image: alpine:latest
+  script:
+    - echo "Déploiement sur serveur de staging..."
+    # - ssh user@staging-server 'cd /path/to/guindy_manager && git pull && php artisan migrate'

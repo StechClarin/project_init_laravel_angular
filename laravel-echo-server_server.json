@@ -1,0 +1,38 @@
+{
+    "authHost": "https://www.guindytechnology-solutions.com",
+    "authEndpoint": "/broadcasting/auth",
+    "clients": [
+        {
+            "appId": "c44257c0bce273e2",
+            "key": "a4d0f2977b93462996d64959084d761f"
+        }
+    ],
+    "database": "redis",
+    "databaseConfig": {
+        "redis": {},
+        "sqlite": {
+            "databasePath": "/database/laravel-echo-server.sqlite"
+        }
+    },
+    "devMode": true,
+    "host": null,
+    "port": "6001",
+    "protocol": "https",
+    "socketio": {},
+    "secureOptions": 67108864,
+    "sslCertPath": "/etc/letsencrypt/live/guindytechnology-solutions.com/fullchain.pem",
+    "sslKeyPath": "/etc/letsencrypt/live/guindytechnology-solutions.com/privkey.pem",
+    "sslCertChainPath": "",
+    "sslPassphrase": "",
+    "subscribers": {
+        "http": true,
+        "redis": true
+    },
+
+    "apiOriginAllow": {
+        "allowCors": true,
+        "allowOrigin": "*",
+        "allowMethods": "GET, POST",
+        "allowHeaders": "Origin, Content-Type, X-Auth-Token, X-Requested-With, Accept, Authorization, X-CSRF-TOKEN, X-Socket-Id"
+    }
+}

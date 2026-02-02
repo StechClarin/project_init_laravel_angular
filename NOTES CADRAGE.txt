@@ -1,0 +1,860 @@
+STT
+
+
+Solution full web
+
+=> Préférences
+    - Nombre de derniers caractères à récupérer dans le n° de chassis lors de l'affichage de la note de détail
+
+
+=> Deux portails
+
+	=> Grand public / utilisateur
+
+	Compte avec des accès
+		Génération d’un email automatique
+	Création d’un nouveau dossier
+	Suivi des états de leur dossier (envoyer des informations par mail et SMS)
+	Notification interne / email / sms
+
+	=> Administration
+		Nommenclature douanière
+		Type de marchandises (véhicules, marchandises)
+		Type de clients
+		Nomenclature de clients
+			Grand compte
+			Exonéré
+			franche
+
+
+
+		Gestion des clients
+			Code client *
+            Alias *
+			nom *, prénom *, adresse *, nom de société *
+			contacts *
+			Préfixe de codification * (à proposer automatiquement)
+			observations
+			Type de marchandises
+			Liste des entrepots
+
+		Type d’entrepôts
+			Fictif (magasinage, facturation)
+			STT
+
+		Vehicule
+            Type de véhicule (Utilitaire, particulier, QUAD)
+			Marque (à créer + nomenclature douanière)
+			Modele (à créer + nomenclature douanière)
+			Boite de vitesse
+			Motorisation
+			Codes clients
+				Client
+				Prix
+
+
+		Entrepots
+			Type d’entrepot
+			numéro d’identification douanière
+			appartenance (Si pas de client => STT)
+
+		Dossier du client
+			Code
+			Type de marchandises (véhicules)
+			Entreport
+			Règlements
+
+		=> Nomenclature (importer via un fichier Excel)
+			Nom
+			Taxe
+
+		=> Marchandise
+			Type de marchandise
+			Nom
+			Nomenclature douaniere
+			Listes de concessionnaires
+
+		=> Livreur
+			Nom
+			Prénom
+			Numéro de téléphone
+			Adresse
+			Planning des livraisons (affectation des dossiers au préalable)
+
+		=> NB: Possibilité de fusionner des ordres de transit
+
+		Création des BSC === Certains clients envoies les demandes avant
+
+
+
+		Création de l’Ordre de transit  (attente du formulaire par STT)
+			Informations générales
+				N° de dossier (généré automatiquement par le système)
+				Date d’ouverture
+				Client
+				Etat du dossier (en création)
+				N° du dossier
+				Type de marchandise
+
+				Code / N° doté du dossier (préfixe de codification - deux derniers chiffres de l’année - n° incrémenté par rapport au client)
+
+				Numéro de transit (information complémentaire)
+				Plusieurs DPI (à reprendre par défaut au niveau de la liste des articles)
+
+ 			Autres docs (pour permettre de joindre les docs)
+
+			Type de marchandise
+				Marchandise(s)
+					Mode de transport (aérien, maritime) à paramétrer
+					Mode d’expédition (container)
+						* Si par container : définir le nombre de container
+							Pour chaque container
+								Taille du container
+								N° de container
+
+						* groupage (container partagé)
+							n° de container
+
+						* vrac (posé dans un bateau)
+
+						Pour chaque container il faut déclarer les marchandises dans ce container
+
+				Véhicule(s)
+					Soit on passe par le code pour retrouver le véhicule
+					Soit on passe par les sélections pour retrouver
+
+
+
+			Type de dossier
+				Consommation directe *
+				Mise en entrepôts (entrée de stock)
+				Sortie de stock (Valeur du stock)
+				DPI (demande préalable)
+				Admission temporaire
+				Exportation
+
+
+			Liste de marchandises (jusqu’à 11 articles)
+				Assurance (Valeur / manuel)
+				Frêt (poids brut / manuel)
+				Devise (chaque Mercredi, )
+
+
+		Validation de l’ordre de transit par la direction
+
+
+
+
+	Compagnie maritime
+		nom
+		tracking url
+		contacts
+
+
+Pièces à joindre lors de l’ordre de transit
+	Facture fournisseur
+	scan BSC
+
+
+NB:
+BSC bordereau de suivi ce cargaison
+Format du document
+Voir la possibilité de convertir les dossiers
+
+
+En création => état 0
+En attente de validation
+En traitement (après validation et Scan des documents)
+
+
+
+
+Notes de détails (affecter des nomenclatures)
+
+	Liste des marchandises
+
+	Bureau d’études
+	Numéro d’études
+
+
+
+
+25 000 000
+Singer en fonction des marchandises
+Montant de l’assurance
+Répartition assurance  / Fret
+	Par le poids
+		Montant assurance / poids total * poids de la marchandise
+
+	Par valeur
+		Montant assurance / montant total * montant de la marchandise
+
+	Manuel
+		Si c’est le cas, les champs en dessous sont masqués
+
+Valeur CAF
+	valeur + assurance + fret
+
+
+
+200 000 / 25 000 000 *
+
+
+
+Déclaration de douane
+
+
+NB: Après le n° de déclaration
+La note passe en BAE qui après avoir entrée la date de BAE passe en livraison
+
+
+Associer des frais au dossier
+		Type de dépenses
+		Affecter une valeur au type de dépense
+
+
+
+
+* Consommation directe
+
+Importation directe, livrée du port jusqu’au client
+
+
+* Mise en entrepot
+
+Le client ne paye pas les frais de douane tout de suite et le fera plus tard
+
+
+Entrepôts STT () & entrepôts Clients (frais de magasinage non chiffré )
+
+
+* DPI (déclaration préalable d’importaition), prestation facturée
+
+En soi ce n’est un dossier, mais juste des docs à préparer, un service offert au client
+
+
+* Admission temporaire
+
+La voiture est présente et utilisée mais elle ne paye pas les frais de douane, l’admission temporaire est renouvellable sur une période
+
+
+* Exportation
+
+La marchandise passe sur un endroit et doit continuer ailleurs
+
+
+
+
+Ouverture du dossier  = TTC / Exo TVA = Remplir Ordre de transit
+
+
+
+Notes:
+
+* Autorisation APIX pour justifier
+* Un seul mode d’expédition sur l’ordre de transit
+* Historiser les changements de devises
+* Et chaque Mercredi, penser à mettre à jour
+* S’il y a changement d’OT, voir la possibilité au lieu de supprimer ça, de le retracer dans le logiciel
+* Demande cliente peut donner plusieurs OT (à cause des nouvelles règles )
+* Transaction d’entrepôts
+* Possibilité de générer des CMC dans les dossiers véhicules (déposer, traiter, receptionner)
+* Suivi des demandes de prorogations (déposer, traiter, réceptionner)
+
+
+
+
+
+——— 04/08/2022
+
+* Unité de mesure
+* Modalité de paiement fin de mois
+* Type de facturation
+    *
+* Créer les origines
+* Modes de paiement => traites, effets
+    * Seuil
+    * Ajouter un seuil mode de paiement traite dans la banque
+* Gestion des traites
+* Taxes sur la valeur en douane
+    * Formules / montant
+    * Ajouter l’ordre dans les taxes
+    * Et l’inclusion d’une autre taxe + somme
+    * Liste des taxes qu’elle contient
+    * En attente de présentation +  BIC le paramétrage voudrait que sur la nomenclature est soit mise en selection,
+    * Mais sur un type de client,
+    * Comptant ou crédit ->
+    * Apparait dans la note de détail (C'est pour les colonnes articles)
+    * Ajouter la caisse fournisseur (paramétrer dans le fournisseur)
+        * Case à cocher 6/100 (OUI/NON)
+* Nomenclature douanière
+    * Unité de mesure
+    * Valeur mercurielle
+    * Taux de facturation Ajouter des mots clés non obligatoire
+* Régimes
+    * Taxes exonérants
+* Dossier
+    * Qui a validé les droits de droits, le client depuis le front ou l’utilisateur depuis le back
+* Marchandise
+    * Nomenclature douanière non obligatoire
+    * Créer une marchandise générique dans le code
+    * Attribuer les clients qui auront accès à cette marchandise depuis le front
+    * Ajouter Tarif BSC
+* Type d’entrepot
+    * Retirer appartenance,
+    * Ajouter
+        * N° d’entrepôt,
+        * Le client
+        * La description
+    * Par défaut le type d’entrepôt sera directement affecté
+    * Ajouter un tableau d’emplacements
+* Modèle
+    * Rajouter la marque => bidirectionnelle la fonctionnalité
+* Type de client
+    * Ajouter des taxes qui sont obligatoires
+        * Et pour certaines taxes, l’option agrée doit exister pour permettre de créer un renouvellement automatique
+        * ils sont agrés à centres des grandes entreprises pour bénificier de certaines exonérations (Add + Retour Rayan)
+    * Ajouter des taxes qui sont exonérées / supprimées
+* Nomenclature
+    * Rajouter une couleur et réutiliser dans le dossier
+* Client
+    * Définir les marchandises auxquelles le client aura accès => fonctionnalité bidirectionnelle
+    * Définir les types d’importation autorisés  (choix multiple) ()
+    * Ajustement (OUI / NON) à répercuter dans la note de détail, mais le client à la main finale dessus
+* Livreur
+    * Nom + prénom
+    * N° de téléphone
+    * Email (opt)
+* Compagine maritime
+    * Renommer à fournisseur
+    * Lier aux différents articles de facturation / debours
+    * Caisses (Nom, Description)
+    * Code créditaire
+    * Crédit initial
+    * Crédit résultat
+    * Modalité de paiement
+* Articles de facturation / debours
+    * Date BAE (Choisir la date sur laquelle la date d'écheance doit se baser)
+    * Nombre de jour d'échéance
+* Navires
+    * Nom
+* Bureaux
+    * Nom
+* Dossier
+    * Une fois que les dossiers sont crées, bloquer la modification / suppression de l’OT client
+    * Si la modification de l’OT est effectuée par le client, une notification devra être généré aux utilisateurs en charge de dossier pour traitement et tant que le nombre d’unités dans l’OT est différent du total d’unités dans le dossier, une alerte devra s’afficher sur l’OT et des rappels journaliers seront envoyés pour rappeler de terminer le traitement
+    * La suppression des notes de détails entraineront le recalcul des couts du dossiers car ces calculs sont des répartitions
+
+* Type de conteneur
+    * Ajouter le Tarif BSC
+
+
+SI SUR UN CHAMP DE SELECTION, ON A QU’UN SEUL ITEM, SELECTIONNÉ PAR DEFAUT L’ELEMENT
+
+OT => Dossier => Facture(s)
+
+
+
+12/09/2022
+
+Client
+	Transport
+	Debours
+
+
+Types de document
+	Nom
+	Multiple (OUI / NON)
+	Type de transaction
+		Nom (OT, Dossier…)
+		Obligatoire (OUI / NON)
+
+
+Type de déclaration = type de dossier
+    Nom
+    Description
+    Couleur bg
+    Couleur Fg
+
+**************** OT / Dossier à l'état en attente =>
+
+N° de dossier générer automatiquement par le système
+N° OT générée automatiquement par le système
+Client (alias)
+Date
+Code (AA + ALIAS + Numéro dans l’année)
+Nom du Navire (supprimer les navires dans le backoffice)
+Date de départ
+Date prévue d’arrivée
+
+Type d’importation (Conteneur / Marchandise, Véhicule, Aeroport, Groupage, Vrac)
+	Nom
+	Description
+	Magasinage (+ Date d’arrivée)
+
+Mode d’expédition (Groupage, Vrac, Conteneur)
+
+Type de déclaration (type de dossier)
+
+Liste des conteneurs (Si conteneur)
+	Type de conteneur
+	Nombre de conteneur
+	N° de conteneur
+
+Liste des marchandises
+	Quantité
+	Marchandise (Désignation)
+	Poids
+	Unité de mesure (kg) automatiquement attribué
+ 	Nomenclature douanière
+		Selon DPI
+		Selon Facture Fournisseur
+		Liste des nomenclatures douanière
+	Type de dossier (Mise en entrepot, Consommation directe)
+
+Documents joints obligatoires
+	Types de document (factorisé)
+		N°
+        Type (Origine | Copie )
+        Categorie
+		COPIE
+		Document joint
+        Montant
+        Devise
+        Type assurance
+
+    Connaissement (BL en anglais)
+        N°
+        Type (Original | Copie)
+        Document joint
+	Factures fournisseur
+		N°
+		Montant
+		Devise
+		Type de facture (Départ Usine, Franco Quai, CAF, FOB)
+	Facture Fret
+		Montant
+		Devise
+	Assurance
+		Type d’assurance (Original / Par STT en S.A.P S.A.U.F)
+		Si Type d’assurance = Original, joindre un document
+	D.P.I
+		pas de D.P.I
+		à venir
+		Original (joindre un document)
+	BSC (A faire par STT, Original)
+
+	Autres
+		Nom du document
+		Joindre le fichier
+
+Options client
+	Transport
+	Debours
+
+NB: OT => Dossier => Sous-dossier
+
+
+**************** Dossier à l’état dossier ouverture
+
+Date de magisanage se calcule automatiquement après la date d’arrivée
+
+
+DEBOURS & LIVRAISON
+
+    Surestaries (10, 14, 18, 21)
+	    Nom
+	    Nbre de jour
+
+    Debours
+        Famille Debours
+        Debours
+        Date
+        Fournisseur (optionel) n'afficher
+        Montant
+        Date du debours / date de facture
+        Modalité de paiement (10j date du debours à créer par défaut)
+        Date d'écheance (Selon la Modalité de paiement)
+        Réparatition (par le nombre, Par la quantité, Par le poids)
+            Ne pas utiliser le nombre de virgule
+            Dans le cas où on a 3 sous-dossiers, pour les premiers on fait les
+            règles de trois on considérant uniquement la partie entière et pour le dernier
+            on fait la soustraction
+
+        Paiements
+            Date
+            Montant
+
+
+DOUANE
+
+    MANIFESTE (Autant de document Connaissement) (0...*) --- A faire monter Dossier de base
+        Lié au N° du type de document - Connaissement
+        N° *
+        AA *
+        BUREAU * (même bureau pour tous les manifestes)
+        Date *
+        Article n° *
+        Date Article *
+        Quantité article *
+        Poids totale article *
+        Lier les sous-dossiers concernés (non obligatoire)
+
+        NB:
+        - On ajoutera une case à cocher (impact manifeste pour lier les deux)
+        Si les quantités ne sont pas identiques, bloquer la déclaration
+
+        - Les N° de manifeste dans un même dossier sont censés $être identiques,
+        si ce n'est pas le cas, il faut mettre une alerte visible sur l'interface et générer une notification
+
+    NOTES DE DETAIL (0...*)
+
+        Régime
+        Mode de règlement
+        Navire
+        Port de chargement (inexistant pour la Sortie d'entrepot)
+        Ajustement (OUI/NON) (récupérer du client, mais l'info est modifiable sur la note de détail)
+        Assurance (inexistant pour la Sortie d'entrepot)
+            Répartition (poids, valeur, manuelle)
+            Devise
+            Valeur
+
+        Fret (inexistant pour la Sortie d'entrepot)
+            Répartition (poids, valeur, manuelle)
+            Devise
+            Valeur
+
+        Articles
+            N° (1, 2, 3) autoincrement front
+            Nombre de colis
+            Nomenclature
+            Designation
+            - Quantité de référence (non obligatoire, décrit comment le client fera sortir la marchandise des entrepots et permet d'établir la facture de la règle de 3)
+            - Unité de mesure
+            Origine => Pays
+            Provenance => Pays
+            Poids Brut (Kg)
+            Poids Net (Kg)
+            N° DPI
+            Valeur Facture / FOB
+            Devise Facture
+            Taux de change de la devise (automatiquement assigné)
+            Valeur CAF (calculé automatiquement)
+            Valeur CFR (calculé automatiquement. Valeur FOB + Fret) sauf pour la SE
+            Manifeste [Possibilité de sélectionner le manifeste concerné]
+            Répartition de la formulaire (Quantité Colis / Poids Net / Quantité de référence/Manuelle)
+                - à juste définir dans l'entrée de l'entreport
+                - C'est ce qui fait que lors de la sortie, la formule de répartition hérite des infos de l'entrée
+                - Manuelle
+                    Dans la sortie, il faudra mettre la valeur à sortir
+                    * Assurance = Valeur totale assurance de l'article / Valeur FOB totale à l'entrée * Valeur de sortie (Se référer à la répartition à l'entrée)
+                    * Fret = Valeur totale assurance de l'article / Poids Net totale à l'entrée * Poids Net de la sortie (Se référer à la répartition à l'entrée)
+            Liquidations (Calculées automatiquement au moment de l'enregistrement)
+                Baxe taxable
+                Taxe
+                Valeur de la taxe
+
+        NB: Si la somme des quantités poids Brut des articles est différent de la somme déclarée,
+            générer une alerte (revoir la note de détail | remplacer la quantité trouvée dans la ligne définie)
+
+        * Dans le pdf note de détail
+                Ajustement = (Valeur article + Fret) x 9% et convertie en CFA
+                La ligne "Soit en CFA"  juste à côté du tire, faire la somme total pour tous les articles
+
+        Actions
+            Supprimer la note
+            Voir liquidation (dans les liquidations, le taux des taxes doivent être conservées)
+
+            Voir la note de détail
+            Appliquer les taxes et cours de devises actuels
+
+            + Splitter la note de détail (afficher toutes les lignes de la note de détail et définir les quantités qui seront conservées dans le nouveau sous-détail)
+                - ventiller les debours
+
+            + Envoyer par mail pour validation (pdf de la liquidation avec un texte)
+
+            - Validation
+                * Date de validation
+                * Remarques
+                * Client / STT
+
+
+    DÉCLARATION -- Lié au sous-dossier
+        N° TRANSIT
+        AA
+        BUREAU
+        N° DÉCLARATION
+        Date
+        Régime (récupérer de la note de détail)
+
+        NB:
+            * Une fois que la déclaration est saisie, la note de détail n'est plus supprimable, ni éditable
+            * Une fois que la déclaration est saisie, on devient en attente du BAE
+
+    BAE (une fois le BAE saisi par la date, la date d'écheance = date BAE + 15jrs du tiers Douane)
+        Date BAE
+
+        NB:
+        - Créer une page spécifique BAE à pointer
+        Quand le BAE est saisie par Baldé/ (celui qui n'a pas le droit de validation directe), il va falloir
+        notifier ceux qui ont le droit de validation et s'attendre à la validation
+        En attente ; à pointer
+        Validé : Pointé
+
+
+
+NB:
+    => Debours - facturé au fournisseur DOUANE au moment de la saisie de la date du BAE / Mais déjà crée dès l'instant que la note de détail a été renseignée
+        Note détail non déclarée (Liquidation) - mode devis
+        Note de détail déclarée (Liquidation) - mode devis
+        Note de détail déclarée avec Date BAE (Liquidation) - mode facture
+        Règlements fournisseur / Règlement fournisseur
+            N° de chèque
+    => Envoie du mail depuis un dossier avec possibilité de sélectionner les docs uploadés et les docs générés par le système pour envoie du mail,
+    Concerner
+
+    => Intégrer une génération de CMC pour les dossiers Véhicules (Consommation directe / Sortie d'entrepôts)
+        > Si CD, => N° Connaissement / PORT DE chargement
+        > SI MEF,
+        > SEF: N° de sommier
+        * CMC
+            Genre: A créer et à lier au véhicule
+            Type:  Modèle + Cylindre + Energie + Désignation complémentaire
+            N° dans la série du type: N° de chassis
+            N° d'immatriculation étrangère: ---
+            Date de la 1ère mise en circulation: NEUF
+            Puissance fiscale corrigée (1)
+            Droits et taxes acquités: Total Liquidation / Nbre de colis article
+            Droits et taxes exonérés:
+
+    Faisant objet ... Régime du dossier en cours, date de la déclaration, numéro de la déclaration, client + adresse (majuscule)
+
+DEBOURS & LIVRAISON
+
+    Date BL
+    OT
+    Navire
+    Type de transport (liste des conteneurs de L'OT à selectionner)
+    N° DE LA DÉCLARATION
+    REGIME (Type d'importation => Mise en consomation directe)
+    Nbre de tc disant contenir
+
+    Liste des marchandises
+        Quantité
+        Marchandise
+        Poids
+
+
+    NB:
+    - Dans le cas d'un type de dossier avec génération BL, Si toutes les quantités ne sont pas présentes en BL, impossible de générer la Facture
+    - Créer une page spécifique BL à décharger
+        Tous les BLs, iront dans une ligne de BL à décharger par le client
+        Dès que c'est validé, il disparait de là
+
+
+
+Ouverture du dossier => Réception des dossiers originaux
+
+
+
+Notifications
+
+* Une fois que l’OT est ouvert, notifié ceux qui ont le droit de validation
+* Une fois que c’est validé, notifier le service douane
+* Générer une alerte pour la date de magasinage
+* Générer des alertes en fonction des dates d'écheance
+* Rappel du renseignement du taux les mercredis matin
+
+
+17h44
+
+
+
+********************** VEHICULE CONSOMMATION DIRECTE **********************
+
+-> Cylindre
+    Nom
+    Modèle
+
+
+OT
+
+    Liste des marchandises (dans la section véhicule à rajouter, pouvoir saisir un préfixe qui sera à l'ajout au niveau du numéro de chassis)
+        Code (généré auto)
+        Marque
+        Modèle
+        Cylindre
+        Energie
+        N° de chassis (text-uppercase => toujours en majuscule)
+        N° de chassis Note de détail (récupérer N derniers caractères du N° de chasis de base)
+
+
+Dossier
+
+    Notes de détail
+        Lignes détail
+            > Chaque ligne pourra être lié à une ou plusieurs chassis tant que ces derniers ont la même nommenclature
+            > Nbre de colis = Somme des N° de chassis sélectionnés
+            > Nommenclature douanière
+            > Désignation: te donner la main sur la désignation
+            > Désignation complémentaire dans laquelle Baldé peut rajouter sa précision
+            > Poids Brut:
+            > Poids Net sera calculé automatiquement en faisant la somme du poids des vehicules sélectionnées
+
+
+
+
+********************** VEHICULE MISE EN ENTREPOT **********************
+
+
+> **********************
+
+-> Lier le regime au type d'importation,
+si aucun type d'importation n'est définie, considérér qu'il peut être lié à tout le monde
+
+-> Rajouter au moment de la déclaration, la selection de l'entrepot de stockage (Champ de sélection)
+La liste d'entrepots affichés lors de la selection ne doit contenir que les entrepots de stt et celui du client en cours
+
+-> Une fois la déclaration validée, la système devra générer un n° de sommier interne : AA-(Auto incrément à 3 chiffres)
+
+-> Pour le bouton "Imprimer Bl", ne plus faire de distinction par rapport au fait que c'est
+Si entrepot = STT, faire BL,
+Si entrepot = client, ne pas faire BL
+
+-> Une fois le BAE saisie,
+* on doit avoir la possibilité pour dossier vehicule
+    > Générer une Feuille de contrôle réception (uniquement)
+        infos de controle
+        + gestion des incidents
+
+    > Générer une feuille chassis
+        Si c'est un véhicule: AAAA | Bur. | Décl. | Date | N° de sommier interne
+        avec les 4 derniers chiffres de chassis qui doit prendre toute la page blanche disponible
+
+* on doit avoir la possibilité pour un dossier marchandise
+    > Générer une fiche sommier
+        Si c'est un véhicule: AAAA | Bur. | Décl. | Date | N° de sommier interne
+        Tableau Designation | Qté | SEF | N° de Transit | Entree | Sortie | Solde
+
+
+-> Page gestion des sommiers à intégrer
+
+* Date d'expiration du sommier = date de déclaration + 360 jours
+Dans la gestion des sommiers, intégrer les demandes de prorogation, qui une fois validée, va recalculer la date de
+Générer aussi le courriel automatiquement une fois le demande de prorogation effectuée dans le système
+
+* Au clic, sur la ligne sommier, on doit avoir la possibilité de générer un recap global
+
+    * Dans la section historique de sortie, au clic sur le N° de transit, on retourne au dossier de directement
+
+-> Possibilité de générer les pdf/excel groupés (un ensemble de sommier les uns à la suite des autres)
+
+-> captures d'écran, gestion des sommiers
+
+-> Générer les expos et les alertes liées à cela (en plus)
+
+
+
+********************** VEHICULE SORTIE D'ENTREPOT **********************
+
+    OT
+        Date
+        Client
+        Articles (Articles de la note de détail)
+            Qte
+            Poids
+            Marchandises/Véhicule
+
+
+    Dossier
+        Date
+        Client
+        Grouper les docs à imprimer au niveau du dossier SEF
+
+        - Plus de manifeste
+        Notes de détail (générer automatiquement)
+
+        Déclaration
+        BAE
+        Attachement
+
+
+
+
+NB:
+* Gestion des sommiers
+* Informations sur la séparation des dossiers dans le cas (CD ou MEP / NOTES DE DETAIL FASSE PLUS DE 11 ARTICLES / CONSOMMATION DIRECTE EST TROP ELEVÉE)
+
+
+
+
+
+
+
+******* Demande de prorogation
+
+    - Génerer des alertes à partir 1 mois avant la date d'expiration des demandes de prorogations (sommier, exposition)
+
+    * Demande de prorogation de sommiers
+
+        On sélectionne le client, et le sys affiche tous les sommiers,
+
+        Délai de prorogation est de 01/03/06
+        PJ obligatoire dans la prorogation
+        Liste des sommiers doivent être liés au même Bureau
+
+        ETAPES
+        -> 1. Envoie de la direction des douanes
+        -> 2. Retour douane
+            -> Accepter
+                -> Si validé, il faut saisir la référence de la réponse + la date + Scan du document
+                -> Générer le deuxième document pour la maj dans GAINDE
+            -> Refuser
+
+    * Demande de prorogation d'exposition (uniquement pour les marchandises véhicules)
+
+        On selectionne le client et le sys affiche tous les véhicules en entrepots et c'est chque numéro de chassis qui est
+        Nombre de jour
+
+        ETAPES
+        -> 1. Envoie de la direction des douanes
+        -> 2. Retour douane
+            -> Accepter
+                Possibilité de faire un BL expo une fois validé
+                Date de validation (à saisir)
+                Date d'echeance (à saisir)
+            -> Refuser
+
+
+
+
+------ En attente STT
+
+* Sortir une note de détail avec une valeur mercurial ?
+    dans la nommenclature, lorsqu'il y a une valeur mercuriale,
+    il faudra mettre la valeur, la devise, l'unité de mesure, Option (Nbre de colis / Poids Net) pour répartition
+
+    Possibilité d'exiger - Unité / Quantité
+    + Si unité exigé, on doit renseigner < l'Unite de mesure >
+* Partie de colis à analyser par Rayan ?
+    Lors de la création d'un article au niveau de la note de détail, possibilité de selectionner "partie colis"
+    et considérer à ce moment là le nombre de colis à 0
+
+
+* Facturation à voir après avoir étudié tous les scénarios
+* Document dévis pour validation des taxes, voir comment intégrer ça dans le logiciel ?
+-> dans le groupe
+
+
+²
+-> BLs expo en attente
+
+NOTES DE REUNION 07/10/2022
+
+* Mais si dans le calcul on a une virgule, on arrondi au chiffre supérieur
+
+* Dans les prorogations, on doit avoir le nombre de mois de départ, une fois validée,
+on doit saisir le nbre de mois accordé, et une fois saisie
+on doit pouvoir mettre le nbre de mois finalement saisie
+et c'est sur cette date
+

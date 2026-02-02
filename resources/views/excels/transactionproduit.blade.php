@@ -1,0 +1,78 @@
+
+<h4 class="text-center">ENTREE / SORTIE DE STOCK DE PRODUIT</h4>
+
+@if(isset($data['date_start_fr']) && isset($data['date_end_fr']))
+    <h4 class="text-center"><u>PERIODE:</u> Du {{$data['date_start_fr']}} Au {{$data['date_end_fr']}} </h4>
+@endif
+@if(isset($data['libelleDepot']))
+    <h4 class="text-center"><u>DEPOT:</u> <span class="text-uppercase">{{$data['libelleDepot']}}</span> </h4>
+@endif
+@if(isset($data['produit']))
+    <h4 class="text-center">
+        <u>PRODUIT:</u>
+        <span class="text-uppercase">{{$data['produit']->designation_fr}}</span>
+        (<span class="text-uppercase">{{$data['produit']->code}}</span>)
+    </h4>
+@endif
+<br><br>
+<div>
+    @php
+        $total_entree = 0;
+        $total_sortie = 0;
+    @endphp
+    @foreach($data['data'] as $key => $group)
+        @if(count($group) > 0)
+            @php
+                $sous_total_entree = 0;
+                $sous_total_sortie = 0;
+            @endphp
+            <h4 class="text-uppercase">
+                <u>{{$key}}</u>
+            </h4>
+            <table class="table">
+                <tr class="tr">
+                    <th class="th">Date</th>
+                    <th class="th">OBSERVATIONS</th>
+                    <th class="th text-center">ENTREE</th>
+                    <th class="th text-center">SORTIE</th>
+                </tr>
+                @foreach($group as $d)
+                    <tr class="tr">
+                        <td class="td text-center">{{Carbon\Carbon::parse($d->dateop)->format('d/m/Y \à h:i')}}</td>
+                        <td class="td text-left">{{$d->titre}}</td>
+                        @if($d->is_entree)
+                            <td class="td">{{$d->quantite_unitaire}}</td>
+                            <td class="td">0</td>
+                        @else
+                            <td class="td">0</td>
+                            <td class="td">{{$d->quantite_unitaire}}</td>
+                        @endif
+                        @php
+                            if ($d->is_entree)
+                                $sous_total_entree += $d->quantite_unitaire;
+                            else
+                                $sous_total_sortie += $d->quantite_unitaire;
+                        @endphp
+                    </tr>
+                @endforeach
+                <tr class="tr">
+                    <td></td>
+                    <td>{{ __('customlang.total') }}</td>
+                    <td class="td">{{$sous_total_entree}}</td>
+                    <td class="td">{{$sous_total_sortie}}</td>
+                </tr>
+            </table>
+        @endif
+        @php
+            $total_entree += $sous_total_entree;
+            $total_sortie += $sous_total_sortie;
+        @endphp
+    @endforeach
+</div>
+
+<br>
+<p class="text-right">
+    <b><u>TOTAL DES ENTREES :</u></b> {{$total_entree}}
+    <b><u>TOTAL DES SORTIES :</u></b> {{$total_sortie}}
+</p>
+<br><br>
